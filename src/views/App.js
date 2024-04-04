@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.scss';
+import MyComponent from './Example/MyComponent';
 
 // function component
 function App() {
@@ -11,14 +12,10 @@ function App() {
         <p>
           Coco là cục cức thúi trôi sông
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        {/* render chính nó */}
+        <MyComponent />
+        {/* Khai báo full => chỉ khi muốn render con */}
+        {/* <MyComponent></MyComponent> */}
       </header>
     </div>
   );
