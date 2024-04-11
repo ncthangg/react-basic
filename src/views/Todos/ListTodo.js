@@ -53,7 +53,7 @@ class ListTodo extends React.Component {
             listTodosCopy[objIndex].title = editTodo.title
 
             this.setState({
-                listTodos: listTodos,
+                listTodos: listTodosCopy,
                 editTodo: ''
             })
             toast.success("Update Succeed!");
