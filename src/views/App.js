@@ -1,6 +1,9 @@
 import logo from './logo.svg';
 import './App.scss';
-import MyComponent from './Example/MyComponent';
+// import MyComponent from './Example/MyComponent';
+import ListTodo from './Todos/ListTodo';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 // function component
 function App() {
@@ -12,11 +15,23 @@ function App() {
         <p>
           Coco là cục cức thúi trôi sông
         </p>
-        {/* render chính nó */}
-        <MyComponent />
-        {/* Khai báo full => chỉ khi muốn render con */}
-        {/* <MyComponent></MyComponent> */}
+        {/* <MyComponent /> */}
+        <ListTodo />
+
       </header>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      // transition:Bounce
+      />
     </div>
   );
 }
