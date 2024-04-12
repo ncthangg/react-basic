@@ -2,6 +2,7 @@ import React from "react";
 import "./ListTodo.scss";
 import AddTodo from "./AddTodo";
 import { toast } from 'react-toastify';
+import Color from "../HOC/Color";
 class ListTodo extends React.Component {
     state = {
         listTodos: [
@@ -77,59 +78,64 @@ class ListTodo extends React.Component {
         let { listTodos, editTodo } = this.state;
         let isEmptyObj = Object.keys(editTodo).length === 0;
         return (
-            <div className="list-todo-container">
-                <AddTodo
-                    addNew={this.addNew}
-                />
-                <div className="list-todo-content">
-                    {
-                        listTodos.map((item, index) => {
-                            return (
-                                <div className="todo-child" key={item.id}>
-                                    {isEmptyObj === true ?
-                                        <span>
-                                            {index + 1} | {item.title}
-                                        </span>
-                                        :
-                                        <>
+            <>
+                <p>
+                    Coco là cục cức thúi trôi sông
+                </p>
+                <div className="list-todo-container">
+                    <AddTodo
+                        addNew={this.addNew}
+                    />
+                    <div className="list-todo-content">
+                        {
+                            listTodos.map((item, index) => {
+                                return (
+                                    <div className="todo-child" key={item.id}>
+                                        {isEmptyObj === true ?
+                                            <span>
+                                                {index + 1} | {item.title}
+                                            </span>
+                                            :
+                                            <>
+                                                {
+                                                    editTodo.id === item.id ?
+                                                        <span>
+                                                            {index + 1} |
+                                                            <input value={editTodo.title}
+                                                                onChange={(event) => this.handleOnChangeEditTodo(event)}
+                                                            />
+                                                        </span>
+                                                        :
+                                                        <span>
+                                                            {index + 1} | {item.title}
+                                                        </span>
+                                                }
+                                            </>
+                                        }
+                                        <button className="btn-edit"
+                                            onClick={() => this.handleOnEdit(item)}>
                                             {
-                                                editTodo.id === item.id ?
-                                                    <span>
-                                                        {index + 1} |
-                                                        <input value={editTodo.title}
-                                                            onChange={(event) => this.handleOnChangeEditTodo(event)}
-                                                        />
-                                                    </span>
-                                                    :
-                                                    <span>
-                                                        {index + 1} | {item.title}
-                                                    </span>
+                                                isEmptyObj === false && editTodo.id === item.id ?
+                                                    'Save' : 'Edit'
                                             }
-                                        </>
-                                    }
-                                    <button className="btn-edit"
-                                        onClick={() => this.handleOnEdit(item)}>
-                                        {
-                                            isEmptyObj === false && editTodo.id === item.id ?
-                                                'Save' : 'Edit'
-                                        }
-                                    </button>
-                                    <button className="btn-delete"
-                                        onClick={() => this.removeOnClick(item)}>
-                                        {
-                                            isEmptyObj === false && editTodo.id === item.id ?
-                                                'Cancel' : 'Delete'
-                                        }
-                                    </button>
-                                </div>
-                            )
+                                        </button>
+                                        <button className="btn-delete"
+                                            onClick={() => this.removeOnClick(item)}>
+                                            {
+                                                isEmptyObj === false && editTodo.id === item.id ?
+                                                    'Cancel' : 'Delete'
+                                            }
+                                        </button>
+                                    </div>
+                                )
 
+                            }
+                            )
                         }
-                        )
-                    }
+                    </div>
                 </div>
-            </div>
+            </>
         )
     }
 }
-export default ListTodo;
+export default Color(ListTodo);
